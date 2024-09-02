@@ -1,0 +1,609 @@
+:root {
+    --maincolor: #ca1016;
+    --hovermain: #b80d13;
+    --green: #7ed321;
+    --hovergreen: #85c01f;
+    --blue: #4264FD;
+    --gray: #8D94AD;
+    --graylight: #F5F5F7;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: black;
+}
+
+.container {
+    padding: 0 10px;
+}
+
+#mainNavMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+#mainNavMobile button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    border: 0;
+    border-radius: 50%;
+    font-size: 1.3em;
+}
+
+#menuMobile {
+    display: flex;
+}
+
+#menuMobile li {
+    border-right: 1px solid var(--gray);
+}
+
+#menuMobile li:last-of-type {
+    border: none;
+}
+
+#menuMobile li:first-of-type a {
+    color: red;
+}
+
+#menuMobile a {
+    padding: 0 5px;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+#bottomLinks {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 10px 5px;
+    border-top: 1px solid var(--gray);
+    z-index: 1;
+}
+
+.bottomActive{
+    color: red !important
+}
+
+#bottomLinks ul {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+    height: 30px;
+}
+
+#bottomLinks ul button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: .6em;
+    color: var(--gray);
+    border: 0;
+    background-color: transparent;
+}
+
+#bottomLinks i {
+    font-size: 2em;
+}
+
+#newElan span {
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    font-size: 3em;
+    border-radius: 50%;
+    height: 40px;
+}
+
+#filterContainer {
+    background-color: var(--graylight);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.fa-sliders {
+    transform: rotate(270deg);
+}
+
+#filterContainer button {
+    border: 0;
+    padding: 0 20px;
+    background-color: white;
+}
+
+#filterContainer button div {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    padding: 20px 0;
+}
+
+#filterContainer button:first-of-type {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#filterContainer button:first-of-type div {
+    border-bottom: 1px solid var(--gray);
+}
+
+#filterContainer button:last-of-type {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#filterContainer p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+}
+
+#filterContainer i {
+    color: red;
+}
+
+#bigSearchMobile,
+#filtersMobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+}
+
+#filtersMobile {
+    /* display: initial; */
+    overflow: auto;
+}
+
+.searchHeader {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--graylight);
+}
+
+.searchHeader div:first-child,
+.searchHeader div:last-child {
+    width: 50%;
+}
+
+.searchHeader div:last-child {
+    display: flex;
+    justify-content: end;
+}
+
+.searchHeader div:first-child button {
+    border: 0;
+    background-color: transparent;
+}
+
+#searchPart,
+#searchRes {
+    padding: 10px;
+}
+
+#searchPart {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: #F6F7FA;
+    margin: 15px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+hr {
+    border: 1px solid var(--graylight);
+}
+
+#searchPart i {
+    width: 30px;
+    color: var(--gray);
+}
+
+#searchPart input {
+    border: 0;
+    background: transparent;
+    width: 95%;
+    padding: 4px;
+}
+
+#searchPart input::placeholder {
+    color: var(--gray);
+}
+
+#searchPart input:focus {
+    outline: 0;
+}
+
+.mobSelectOption {
+    overflow: auto;
+    height: 90%;
+}
+
+.mobSelectOption>button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: start;
+    padding: 15px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+
+.mobSelectOption>button div {
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.mobSelectOption>button span {
+    border-radius: 50%;
+    display: block;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
+#resetButton {
+    border: 0;
+    background-color: transparent;
+    color: red;
+    font-size: 1em;
+}
+
+.toOpenPopUp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 0;
+    background-color: white;
+    border-bottom: 1px solid var(--graylight);
+}
+
+.toOpenPopUp>div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 6px;
+}
+
+.toOpenPopUp h4 {
+    color: var(--gray);
+    font-weight: 400;
+}
+
+.removeItemMob {
+    font-size: 1.5em;
+}
+
+#markaModelMob {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+#markaModelMob>button {
+    border: 0;
+    background-color: transparent;
+    padding: 20px;
+    color: var(--gray);
+}
+
+#showAllMarka {
+    display: block;
+    width: 100%;
+    height: 55px;
+    color: red;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 1.1em;
+    border: 1px solid red;
+}
+
+#markalarMob,
+#driveTypeBtns {
+    background-color: var(--graylight);
+    padding: 10px 0;
+}
+
+#nonFilterModeMob {
+    background-color: white;
+    padding: 10px;
+}
+
+#filterMode {
+    margin: 0 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#driveTypeBtns {
+    display: flex;
+    justify-content: stretch;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#driveTypeBtns>button {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    background-color: white;
+}
+
+#driveTypeBtns>button:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#driveTypeBtns>button:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.selectedTypeBigMob {
+    background-color: red !important;
+    color: white;
+}
+
+#odometerInps h4,
+.minMaxInps h4,
+#priceInpMob h4,
+#mainElanlar {
+    color: var(--gray);
+    font-weight: 400;
+}
+
+#mainElanlar {
+    margin: 10px;
+    font-size: 1.2em;
+    padding: 10px 0;
+}
+
+.minMaxInps {
+    padding: 0 10px;
+    margin-bottom: 15px;
+}
+
+.minMaxInps>div {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.minMaxInps>div>* {
+    width: 50%;
+    background-color: white;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid var(--graylight);
+    text-align: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+#currencyMob {
+    width: 30%;
+    justify-content: center;
+    gap: 20px;
+}
+
+#kreditOrBraterMob {
+    display: flex;
+}
+
+#priceInpMob {
+    margin-top: 10px;
+    padding-bottom: 30px;
+}
+
+#kreditOrBraterMob>* {
+    width: initial;
+    border: 1px solid var(--gray);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#startSearchBtn {
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
+    left: 50%;
+    border: 0;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    transform: translateX(-50%);
+}
+
+.selectedTypeLittle {
+    background-color: rgba(255, 0, 0, .5) !important;
+    border-color: red !important;
+    color: white !important;
+}
+
+#backdrop {
+    background-color: rgba(0, 0, 0, .5);
+    height: 20%;
+}
+
+#littleSelectOption {
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#mainSelect {
+    background-color: white;
+    height: 80%;
+}
+
+#mainSelect>div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#mainSelect>div:first-child button {
+    border: 0;
+    background-color: white;
+    font-size: 1.5em;
+}
+
+#littleSelectOption {
+    display: none;
+}
+
+#carsGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 10px;
+    margin: auto;
+    padding: 0 10px 90px;
+}
+
+#carsGrid>div {
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 15px #eee;
+}
+
+.bgImg {
+    padding: 10px;
+    background: url("https://turbo.azstatic.com/uploads/f710x568/2023%2F01%2F11%2F11%2F19%2F41%2F5f34c8eb-5138-4d0c-b78e-8c817d98aa5f%2F52522_Mu2ZZs1LqQkRDJpgK-R_xw.jpg") center/cover;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+#carsGrid>div>div:last-child {
+    padding: 10px;
+}
+
+.bgImg span {
+    background-color: var(--blue);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: .8em;
+}
+
+.percent,
+.barter {
+    color: white;
+    padding: 4px;
+    font-size: .7em;
+    border-radius: 50%;
+}
+
+.percent {
+    background-color: #F5A623;
+}
+
+.barter {
+    background-color: var(--green);
+}
+
+.bgImg button {
+    border: 0;
+    background-color: transparent;
+}
+
+.bgImg>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gemCrown {
+    display: flex;
+    gap: 5px;
+    padding: 3px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#carName {
+    margin: 10px 0;
+}
+
+.crown {
+    color: rgb(221, 221, 0);
+}
+
+.gem {
+    color: orange;
+}
+
+#more{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#more h2{
+    padding: 20px 0;
+    text-align: center;
+}
+
+#more > div:first-of-type{
+    background-color: var(--graylight);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+#more > div:first-of-type a{
+    background-color: white;
+    padding: 20px;
+}

@@ -1,0 +1,19 @@
+* { 
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, pre,
+a, img, sub, sup, b, u, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, figcaption, footer, header,  
+menu, nav, section, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+    line-height: 1;
+}
+ul { list-style: none }
+table { border-collapse: collapse }
+a { text-decoration: none; }
