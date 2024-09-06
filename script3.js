@@ -325,6 +325,7 @@ function kredBarterHandler(type) {
   event.preventDefault();
   event.target.classList.toggle("selectedTransparent");
   filters[type] = !filters[type];
+  console.log(filters);
 }
 
 renderCars();
@@ -375,7 +376,9 @@ function renderCars(arr = cars) {
                 <div>
                     <h4>${item.price} ${item.currency}</h4>
                     <p id="carName">${item.brand} ${item.model}</p>
-                    <p id="carName">${item.year} ${item.engine} ${item.odometer}${item.odometerUnit}</p>
+                    <p id="carName">${item.year} ${item.engine} ${
+              item.odometer
+            }${item.odometerUnit}</p>
                     <p>Bakı, 27.08.2024 15:13</p>
                 </div>
             </div>
@@ -481,8 +484,7 @@ updateResetButtonOpacity();
 
 function filterCars() {
   let updatedCars = cars.filter((item) => {
-    const showAllCars = !filters.credit && !filters.barter;
-
+    const applyCreditOrBarter = filters.credit || filters.barter;
 
     return (
       (!filters.brand || item.brand === filters.brand) &&
@@ -491,13 +493,14 @@ function filterCars() {
       (filters.city.length === 0 || filters.city.includes(item.city)) &&
       (filters.banType.length === 0 ||
         filters.banType.includes(item.banType)) &&
-    //   (filters.new && filters.driven
-    //     ? true
-    //     : (!filters.driven || item.odometer !== 0) &&
-    //       (!filters.new || item.odometer === 0)) &&
-    //   (showAllCars ||
-    //     (filters.credit && item.credit) ||
-    //     (filters.barter && item.barter)) &&
+      (filters.new && filters.driven
+        ? true
+        : (!filters.driven || item.odometer !== 0) &&
+          (!filters.new || item.odometer === 0)) &&
+      (!applyCreditOrBarter ||
+        (filters.credit && !filters.barter && item.credit && !item.barter) ||
+        (filters.barter && !filters.credit && item.barter && !item.credit) ||
+        (filters.credit && filters.barter && item.credit && item.barter)) &&
       (filters.odometerMax === null || item.odometer <= filters.odometerMax) &&
       (filters.odometerMin === null || item.odometer >= filters.odometerMin) &&
       (filters.yearMax === null || item.year <= filters.yearMax) &&
