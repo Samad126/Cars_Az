@@ -162,7 +162,7 @@
                                         oninput="changeFilter('add', 'priceMin', this.value == '' ? null : this.value)"
                                         onfocus="openTexts(this, 'on', 'priceMin')"
                                         onblur="openTexts(this, 'off' ,'priceMin')" id="priceMin" type="number">
-                                    <button>x</button>
+                                    <!-- <button>x</button> -->
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                         oninput="changeFilter('add', 'priceMax', this.value == '' ? null : this.value)"
                                         onfocus="openTexts(this, 'on', 'priceMax')"
                                         onblur="openTexts(this, 'off' ,'priceMax')" id="priceMax" type="number">
-                                    <button>x</button>
+                                    <!-- <button>x</button> -->
                                 </div>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
         </div>
         <div class="mobileFilterContainer">
             <div id="filterContainer">
-                <button>
+                <button onclick="openPopUps('brand', )">
                     <div>
                         <p><i class="fa-solid fa-car"></i> Bütün markalar</p>
                         <span id="arrow" class="fa-solid fa-chevron-down"></span>
@@ -290,7 +290,7 @@
                         <p></p>
                     </div>
                     <span id="arrow" class="fa-solid fa-chevron-down"></span>
-                    <span>x</span>
+                    <!-- <span>x</span> -->
                 </button>
                 <button class="toOpenPopUp">
                     <div>
@@ -298,14 +298,12 @@
                         <p></p>
                     </div>
                     <span id="arrow" class="fa-solid fa-chevron-down"></span>
-                    <span>x</span>
+                    <!-- <span>x</span> -->
                 </button>
                 <div>
                     <button><i id="arrow" class="fa-solid fa-sliders"></i>Filtrlər</button>
                     <button><i class="fa-solid fa-right-left"></i>Tarixə görə</button>
                 </div>
-                <h2>LADA (VAZ) almaq</h2>
-                <p>5270 elan</p>
             </div>
             <div id="bigSearchMobile">
                 <div id="bigSearchHeader" class="searchHeader">

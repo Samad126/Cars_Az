@@ -163,20 +163,27 @@ function update(fType, div, arr, resultType) {
 
 function openTexts(inp, type, fType) {
   const label = inp.parentElement.parentElement.querySelector("label");
-  const button = inp.nextElementSibling;
+  //   const button = inp.nextElementSibling;
 
   if (type === "on") {
     label.classList.add("labelUp");
-    button.classList.add("visible");
+    // button.classList.add("visible");
   } else {
     if (!inp.value) {
       label.classList.remove("labelUp");
     }
-    button.classList.remove("visible");
+    // button.classList.remove("visible");
   }
 }
 
 function closeAllLists(exceptUl) {
+//   if (
+//     event.target.closest(".selectWithSearch") ||
+//     event.target.closest(".writeNumField")
+//   ) {
+//     return;
+//   }
+
   const filtersContainer = document.querySelector("#mainFilters");
 
   const allDropdowns = filtersContainer.querySelectorAll(
@@ -435,9 +442,11 @@ function resetFilters() {
     .querySelectorAll(".selectWithSearch input, .writeNumField input")
     .forEach((input) => (input.value = ""));
 
-  document
-    .querySelectorAll(".writeNumField label")
-    .forEach((label) => label.classList.remove("labelUp"));
+  let labelField = document.querySelectorAll(".writeNumField");
+
+  labelField.forEach((field) =>
+    field.querySelector("label")?.classList.remove("labelUp")
+  );
 
   document.getElementById("hamisiBtn").classList.add("selectedDriveType");
   document.getElementById("yeniBtn").classList.remove("selectedDriveType");
@@ -511,4 +520,9 @@ function filterCars() {
   });
 
   renderCars(updatedCars);
+}
+
+
+function openPopUps(){
+    
 }
