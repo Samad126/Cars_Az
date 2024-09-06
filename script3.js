@@ -373,8 +373,9 @@ function renderCars(arr = cars) {
                     </div>
                 </div>
                 <div>
-                    <h4>${item.price} ${item.currency} ${item.odometer}${item.odometerUnit}</h4>
+                    <h4>${item.price} ${item.currency}</h4>
                     <p id="carName">${item.brand} ${item.model}</p>
+                    <p id="carName">${item.year} ${item.engine} ${item.odometer}${item.odometerUnit}</p>
                     <p>Bakı, 27.08.2024 15:13</p>
                 </div>
             </div>
@@ -432,7 +433,7 @@ function resetFilters() {
     .forEach((input) => (input.value = ""));
 
   document
-    .querySelectorAll(".selectWithSearch label, .writeNumField label")
+    .querySelectorAll(".writeNumField label")
     .forEach((label) => label.classList.remove("labelUp"));
 
   document.getElementById("hamisiBtn").classList.add("selectedDriveType");
@@ -479,31 +480,32 @@ function updateResetButtonOpacity() {
 updateResetButtonOpacity();
 
 function filterCars() {
-    let updatedCars = cars.filter((item) => {
-      // Check if both credit and barter filters are off
-      const showAllCars = !filters.credit && !filters.barter;
-  
-      return (
-        (!filters.brand || item.brand === filters.brand) &&
-        (!filters.currency || item.currency === filters.currency) &&
-        (filters.model.length === 0 || filters.model.includes(item.model)) &&
-        (filters.city.length === 0 || filters.city.includes(item.city)) &&
-        (filters.banType.length === 0 || filters.banType.includes(item.banType)) &&
-        (filters.new && filters.driven ? true : 
-         (!filters.driven || item.odometer !== 0) &&
-         (!filters.new || item.odometer === 0)) &&
-        (showAllCars || (filters.credit && item.credit) || (filters.barter && item.barter)) &&
-        (filters.odometerMax === null || item.odometer <= filters.odometerMax) &&
-        (filters.odometerMin === null || item.odometer >= filters.odometerMin) &&
-        (filters.yearMax === null || item.year <= filters.yearMax) &&
-        (filters.yearMin === null || item.year >= filters.yearMin) &&
-        (filters.priceMax === null || item.price <= filters.priceMax) &&
-        (filters.priceMin === null || item.price >= filters.priceMin)
-      );
-    });
-  
-    renderCars(updatedCars);
-  }
-  
+  let updatedCars = cars.filter((item) => {
+    const showAllCars = !filters.credit && !filters.barter;
 
-filterCars();
+
+    return (
+      (!filters.brand || item.brand === filters.brand) &&
+      (!filters.currency || item.currency === filters.currency) &&
+      (filters.model.length === 0 || filters.model.includes(item.model)) &&
+      (filters.city.length === 0 || filters.city.includes(item.city)) &&
+      (filters.banType.length === 0 ||
+        filters.banType.includes(item.banType)) &&
+    //   (filters.new && filters.driven
+    //     ? true
+    //     : (!filters.driven || item.odometer !== 0) &&
+    //       (!filters.new || item.odometer === 0)) &&
+    //   (showAllCars ||
+    //     (filters.credit && item.credit) ||
+    //     (filters.barter && item.barter)) &&
+      (filters.odometerMax === null || item.odometer <= filters.odometerMax) &&
+      (filters.odometerMin === null || item.odometer >= filters.odometerMin) &&
+      (filters.yearMax === null || item.year <= filters.yearMax) &&
+      (filters.yearMin === null || item.year >= filters.yearMin) &&
+      (filters.priceMax === null || item.price <= filters.priceMax) &&
+      (filters.priceMin === null || item.price >= filters.priceMin)
+    );
+  });
+
+  renderCars(updatedCars);
+}
