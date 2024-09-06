@@ -828,6 +828,3 @@ let cars = [
     engine: 1.5,
   },
 ];
-
-export default cars;
-

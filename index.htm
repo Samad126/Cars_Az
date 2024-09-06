@@ -12,7 +12,64 @@
     <title>Cars Az</title>
 </head>
 
-<body>
+<body onclick="closeAllLists()">
+    <header>
+        <nav id="topLinksD">
+            <div class="container">
+                <ul id="globalLinks">
+                    <li><a href="">Find.az</a></li>
+                    <li><a href="">Build.az</a></li>
+                    <li><a href="">Ceo.az</a></li>
+                </ul>
+                <ul id="miniLinks">
+                    <li><a href="">Dəstək: (012) 123-12-12</a></li>
+                    <li><a href="">Yardım</a></li>
+                    <li><a href="">RU</a></li>
+                    <li><a href=""><i class="fa-solid fa-heart"></i> Seçilmişlər</a></li>
+                    <li><a href=""><i class="fa-solid fa-user"></i> Giriş</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav id="bottomLinksD">
+            <div class="container">
+                <div>
+                    <a href="">CARS.AZ</a>
+                    <ul id="mainLinks">
+                        <li><a href="">Bütün elanlar</a></li>
+                        <li><a href="">Salonlar</a></li>
+                        <li><a href="">Avtokataloq</a></li>
+                        <li><a href="">Moto</a></li>
+                        <li class="dropdownHeader">
+                            <a href="">Ehtiyat hissələr və aksesuarlar</a>
+                            <ul class="dropdownContent">
+                                <li><a href="">Aksesuarlar</a></li>
+                                <li><a href="">Audio və video texnika</a></li>
+                                <li><a href="">Avtokosmetika və avtokimya</a></li>
+                                <li><a href="">Ehtiyat hissələr</a></li>
+                                <li><a href="">GPS naviqatorlar</a></li>
+                                <li><a href="">Qeydiyyat nişanları</a></li>
+                                <li><a href="">Siqnalizasiyalar</a></li>
+                                <li><a href="">Videoqeydiyyatçılar</a></li>
+                                <li><a href="">Şinlər, disklər və təkərlər</a></li>
+                                <li><a href="">Digər</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdownHeader">
+                            <a href="">İcarə</a>
+                            <ul class="dropdownContent">
+                                <li><a href="">Avtomobillər</a></li>
+                                <li><a href="">Avtobus və mikroavtobuslar</a></li>
+                                <li><a href="">Motosiklet və mopedlər</a></li>
+                                <li><a href="">Xüsusi texnika</a></li>
+                                <li><a href="">Digər</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button>⊕ Yeni elan</button>
+            </div>
+        </nav>
+    </header>
     <nav id="mainNavMobile">
         <ul id="menuMobile">
             <li><a href="">CARS.AZ</a></li>
@@ -23,14 +80,197 @@
     </nav>
     <nav id="bottomLinks">
         <ul>
-            <li><button class="bottomActive" href=""><i class="fa-solid fa-house"></i>ƏSAS</button></li>
-            <li><button href=""><i class="fa-regular fa-heart"></i>SEÇİLMİŞLƏR</button></li>
-            <li id="newElan"><button href=""><span>+</span>YENİ ELAN</button></li>
-            <li><button href=""><i class="fa-solid fa-user"></i>KABİNET</button></li>
-            <li><button href=""><i class="fa-solid fa-bars"></i>DAHA ÇOX</button></li>
+            <li><button onclick="handleBottomLinks('main')"><i class="fa-solid fa-house"></i>ƏSAS</button></li>
+            <li><button onclick="handleBottomLinks('fav')"><i class="fa-regular fa-heart"></i>SEÇİLMİŞLƏR</button></li>
+            <li id="newElan"><button onclick="handleBottomLinks('new')"><span>+</span>YENİ ELAN</button></li>
+            <li><button onclick="handleBottomLinks('user')"><i class="fa-solid fa-user"></i>KABİNET</button></li>
+            <li><button onclick="handleBottomLinks('moreList')"><i class="fa-solid fa-bars"></i>DAHA ÇOX</button></li>
         </ul>
     </nav>
     <main>
+        <div class="desktopFilterContainer">
+            <div class="container">
+                <div id="mainFilters">
+                    <div onclick="toggleList(this)" id="brandDiv" class="selectWithSearch">
+                        <div id="brandContainer" class="fieldContainer">
+                            <div class="valueChoosen">
+                                <input oninput="handleSearch('brand', 'single')" type="text" placeholder="Marka">
+                                <div>
+                                    <h4>Marka</h4>
+                                    <p>nese marka</p>
+                                </div>
+                            </div>
+                            <button class="fa-solid fa-chevron-down"></button>
+                        </div>
+                        <ul class="deskSearchDiv">
+                            <li><button>Sifirla</button></li>
+                            <li><button onclick="filterHandler('brand', 'single', 'a12')">a</button></li>
+                        </ul>
+                    </div>
+                    <div onclick="toggleList(this)" id="modelDiv" class="selectWithSearch disabledDiv">
+                        <div id="modelContainer" class="fieldContainer">
+                            <div class="valueChoosen">
+                                <input oninput="handleSearch('model', 'multiple')" type="text" placeholder="Model">
+                                <div style="display: none;">
+                                    <h4>Model</h4>
+                                    <p>nese model</p>
+                                </div>
+                            </div>
+                            <button class="fa-solid fa-chevron-down"></button>
+                        </div>
+                        <ul class="deskSearchDiv">
+                            <li><button>Sifirla</button></li>
+                            <li><button onclick="filterHandler('model', 'multiple', 'a5')">a <input
+                                        type="checkbox"></button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                        </ul>
+                    </div>
+                    <div class="threeBtns">
+                        <button id="hamisiBtn" class="selectedDriveType"
+                            onclick="updateDriveType('hamisi')">Hamısı</button>
+                        <button id="yeniBtn" onclick="updateDriveType('yeni')">Yeni</button>
+                        <button id="surulmusBtn" onclick="updateDriveType('surulmus')">Sürülmüş</button>
+                    </div>
+
+                    <div onclick="toggleList(this)" id="cityDiv" class="selectWithSearch">
+                        <div id="cityContainer" class="fieldContainer">
+                            <div class="valueChoosen">
+                                <input oninput="handleSearch('city', 'multiple')" type="text" placeholder="Şəhər">
+                                <div>
+                                    <h4>Şəhər</h4>
+                                    <p>nese Şəhər</p>
+                                </div>
+                            </div>
+                            <button class="fa-solid fa-chevron-down"></button>
+                        </div>
+                        <ul class="deskSearchDiv">
+                            <li><button>Sifirla</button></li>
+                            <li><button onclick="filterHandler('city', 'multiple', 'a5')">a <input
+                                        type="checkbox"></button></li>
+                            <li><button onclick="filterHandler('city', 'multiple', 'a15')">a <input
+                                        type="checkbox"></button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                        </ul>
+                    </div>
+                    <div class="doubleFilters">
+                        <div class="writeNumFilters">
+                            <div>
+                                <label for="priceMin">Qiym, min</label>
+                                <div class="writeNumField">
+                                    <input
+                                        oninput="changeFilter('add', 'priceMin', this.value == '' ? null : this.value)"
+                                        onfocus="openTexts(this, 'on', 'priceMin')"
+                                        onblur="openTexts(this, 'off' ,'priceMin')" id="priceMin" type="number">
+                                    <button>x</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="writeNumFilters">
+                            <div>
+                                <label for="priceMax">max</label>
+                                <div class="writeNumField">
+                                    <input
+                                        oninput="changeFilter('add', 'priceMax', this.value == '' ? null : this.value)"
+                                        onfocus="openTexts(this, 'on', 'priceMax')"
+                                        onblur="openTexts(this, 'off' ,'priceMax')" id="priceMax" type="number">
+                                    <button>x</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tripleFilters">
+                        <div onclick="toggleList(this, 'currency')" id="currencyDiv" class="normalSelect">
+                            <div>
+                                <p>AZN</p>
+                                <button class="fa-solid fa-chevron-down"></button>
+                            </div>
+                            <ul class="deskSearchDiv">
+                                <li><button>Sifirla</button></li>
+                                <li><button>a</button></li>
+                            </ul>
+                        </div>
+                        <button onclick="kredBarterHandler('credit')">Kredit</button>
+                        <button onclick="kredBarterHandler('barter')">Barter</button>
+                    </div>
+                    <div onclick="toggleList(this)" id="banTypeDiv" class="selectWithSearch">
+                        <div id="banTypeContainer" class="fieldContainer">
+                            <div class="valueChoosen">
+                                <input oninput="handleSearch('banType', 'multiple')" type="text" placeholder="Ban">
+                                <div>
+                                    <h4>Ban</h4>
+                                    <p>nese Şəhər</p>
+                                </div>
+                            </div>
+                            <button class="fa-solid fa-chevron-down"></button>
+                        </div>
+                        <ul class="deskSearchDiv">
+                            <li><button>Sifirla</button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                            <li><button>a <input type="checkbox"></button></li>
+                        </ul>
+                    </div>
+                    <div class="doubleFilters">
+                        <div onclick="toggleList(this, 'yearMin')" id="yearMin" class="normalSelect">
+                            <div class="valueChoosen">
+                                <p>Il, min</p>
+                                <button class="fa-solid fa-chevron-down"></button>
+                            </div>
+                            <ul class="deskSearchDiv">
+                                <li><button>Sifirla</button></li>
+                                <li><button>a</button></li>
+                            </ul>
+                        </div>
+                        <div onclick="toggleList(this, 'yearMax')" id="yearMax" class="normalSelect">
+                            <div>
+                                <p>Il, max</p>
+                                <button class="fa-solid fa-chevron-down"></button>
+                            </div>
+                            <ul class="deskSearchDiv">
+                                <li><button>Sifirla</button></li>
+                                <li><button>a</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="doubleFilters">
+                        <div class="writeNumFilters">
+                            <div>
+                                <label for="odometerMin">Yürş, min</label>
+                                <div class="writeNumField">
+                                    <input
+                                        oninput="changeFilter('add', 'odometerMin', this.value == '' ? null : this.value)"
+                                        onfocus="openTexts(this, 'on', 'odometerMin')"
+                                        onblur="openTexts(this, 'off' ,'odometerMin')" id="odometerMin" type="number">
+                                    <button>x</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="writeNumFilters">
+                            <div>
+                                <label for="odometerMax">max</label>
+                                <div class="writeNumField">
+                                    <input
+                                        oninput="changeFilter('add', 'odometerMax', this.value == '' ? null : this.value)"
+                                        onfocus="openTexts(this, 'on', 'odometerMax')"
+                                        onblur="openTexts(this, 'off' ,'odometerMax')" id="odometerMax" type="number">
+                                    <button>x</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="filterController">
+                    <p>Bu gün: <a href="">1775 yeni elan</a></p>
+                    <div>
+                        <button id="resetButton" onclick="resetFilters()">Sıfırla</button>
+                        <button id="moreFilter">Daha çox filtr <i class="fa-solid fa-chevron-down"></i></button>
+                        <button onclick="filterCars()" id="filterCars">Elanları göstər</button>
+                    </div>
+                </div>
+                <p>Avtomobil almaq 10000 elan</p>
+            </div>
+        </div>
         <div class="mobileFilterContainer">
             <div id="filterContainer">
                 <button>
@@ -44,51 +284,44 @@
                         <p><i class="fa-solid fa-sliders"></i> Filtrlər</p>
                     </div>
                 </button>
-
-                <!-- <button>
-                        <div>
-                            <h4>Marka</h4>
-                            <p></p>
-                        </div>
-                        <span id="arrow" class="fa-solid fa-chevron-down"></span>
-                        <span>x</span>
-                    </button>
-                    <button>
-                        <div>
-                            <h4>Model</h4>
-                            <p></p>
-                        </div>
-                        <span id="arrow" class="fa-solid fa-chevron-down"></span>
-                        <span>x</span>
-                    </button>
+                <button class="toOpenPopUp">
                     <div>
-                        <button><i id="arrow" class="fa-solid fa-sliders"></i>Filtrlər</button>
-                        <button><i class="fa-solid fa-right-left"></i>Tarixə görə</button>
+                        <h4>Marka</h4>
+                        <p></p>
                     </div>
-                    <h2>LADA (VAZ) almaq</h2>
-                    <p>5270 elan</p> -->
+                    <span id="arrow" class="fa-solid fa-chevron-down"></span>
+                    <span>x</span>
+                </button>
+                <button class="toOpenPopUp">
+                    <div>
+                        <h4>Model</h4>
+                        <p></p>
+                    </div>
+                    <span id="arrow" class="fa-solid fa-chevron-down"></span>
+                    <span>x</span>
+                </button>
+                <div>
+                    <button><i id="arrow" class="fa-solid fa-sliders"></i>Filtrlər</button>
+                    <button><i class="fa-solid fa-right-left"></i>Tarixə görə</button>
+                </div>
+                <h2>LADA (VAZ) almaq</h2>
+                <p>5270 elan</p>
             </div>
             <div id="bigSearchMobile">
-                <div class="searchHeader">
+                <div id="bigSearchHeader" class="searchHeader">
                     <div>
-                        <button class="fa-solid fa-chevron-left"></button>
+                        <button id="bigSearchExit" class="fa-solid fa-chevron-left"></button>
                     </div>
                     <h2>Marka</h2>
                     <div></div>
                 </div>
                 <div id="searchPart">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Marka daxil edin">
+                    <input id="bigSearchInp" type="text" placeholder="Marka daxil edin">
                 </div>
                 <hr />
                 <div id="searchRes">
-                    <div id="popularMarka">
-                        <h4>Populyar</h4>
-                    </div>
-                    <div id="allMarka">
-
-                    </div>
-                    <div class="mobSelectOption">
+                    <div id="bigSearchRes" class="mobSelectOption">
                         <!-- <div>
                             <button>Ad <span></span></button>
                             <button>Ad <span></span></button>
@@ -107,14 +340,14 @@
             <div id="filtersMobile">
                 <div class="searchHeader">
                     <div>
-                        <button class="fa-solid fa-chevron-left"></button>
+                        <button id="filtersExit" class="fa-solid fa-chevron-left"></button>
                     </div>
                     <h2>Filterlər</h2>
                     <div>
                         <button id="resetButton">Sıfırla</button>
                     </div>
                 </div>
-                <button class="toOpenPopUp">
+                <button id="cityFilter" class="toOpenPopUp">
                     <div>
                         <h4>Şəhər</h4>
                         <p>AAAAA</p>
@@ -171,8 +404,8 @@
                     <div class="minMaxInps">
                         <h4>Yürüş, km</h4>
                         <div>
-                            <input placeholder="min." type="search">
-                            <input placeholder="max." type="search">
+                            <input id="odominInp" placeholder="min." type="search">
+                            <input id="odomaxInp" placeholder="max." type="search">
                         </div>
                     </div>
                     <div class="minMaxInps">
@@ -199,7 +432,6 @@
                     <button class="toOpenPopUp">
                         <div>
                             <h4>Rəng</h4>
-                            <p></p>
                         </div>
                         <span id="arrow" class="fa-solid fa-chevron-down"></span>
                     </button>
@@ -252,186 +484,9 @@
             </div>
         </div>
         <h2 id="mainElanlar">Elanlar</h2>
-        <div id="carsGrid">
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
-            </div>
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
-            </div>
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
-            </div>
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
-            </div>
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
-            </div>
-            <div>
-                <div class="bgImg">
-                    <div>
-                        <div>
-                            <i class="percent fa-solid fa-percent"></i>
-                            <i class="barter fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <span>Salon</span>
-                        <div class="gemCrown">
-                            <i class="crown fa-solid fa-crown"></i>
-                            <i class="gem fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4>18700 AZN</h4>
-                    <p id="carName">LADA (VAZ)</p>
-                    <p>Bakı, 27.08.2024 15:13</p>
-                </div>
+        <div class="container">
+            <div id="carsGrid">
+
             </div>
         </div>
         <div id="more">
@@ -453,13 +508,10 @@
     </main>
     <footer></footer>
 
-    <script type="module">
-        import cars from "./data.js";
-        console.log(cars.filter(item => item.odometer == 0));
-        console.log(cars);
+    <script src="data.js"></script>
+    <script src="script3.js">
+
     </script>
 </body>
 
 </html>
-
-<!-- ⊕ -->

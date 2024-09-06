@@ -24,7 +24,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
+    padding: 12px 10px;
     position: sticky;
     top: 0;
     background-color: white;
@@ -36,7 +36,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: var(--maincolor);
     color: white;
     border: 0;
     border-radius: 50%;
@@ -45,6 +45,7 @@ a {
 
 #menuMobile {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #menuMobile li {
@@ -56,7 +57,7 @@ a {
 }
 
 #menuMobile li:first-of-type a {
-    color: red;
+    color: var(--maincolor);
 }
 
 #menuMobile a {
@@ -75,8 +76,8 @@ a {
     z-index: 1;
 }
 
-.bottomActive{
-    color: red !important
+.bottomActive {
+    color: var(--maincolor) !important
 }
 
 #bottomLinks ul {
@@ -103,7 +104,7 @@ a {
 }
 
 #newElan span {
-    background-color: red;
+    background-color: var(--maincolor);
     color: white;
     display: flex;
     justify-content: center;
@@ -134,6 +135,7 @@ a {
 #filterContainer button div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 0;
     padding: 20px 0;
 }
@@ -160,7 +162,11 @@ a {
 }
 
 #filterContainer i {
-    color: red;
+    color: var(--maincolor);
+}
+
+#bigSearchMobile {
+    z-index: 2 !important;
 }
 
 #bigSearchMobile,
@@ -175,7 +181,6 @@ a {
 }
 
 #filtersMobile {
-    /* display: initial; */
     overflow: auto;
 }
 
@@ -209,7 +214,6 @@ a {
 #searchPart {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     background-color: #F6F7FA;
     margin: 15px;
     padding-bottom: 10px;
@@ -242,7 +246,7 @@ hr {
 
 .mobSelectOption {
     overflow: auto;
-    height: 90%;
+    height: 80vh;
 }
 
 .mobSelectOption>button {
@@ -258,7 +262,7 @@ hr {
 }
 
 .mobSelectOption>button div {
-    border: 1px solid red;
+    border: 1px solid var(--maincolor);
     border-radius: 50%;
     padding: 5px;
     width: 20px;
@@ -268,7 +272,7 @@ hr {
 .mobSelectOption>button span {
     border-radius: 50%;
     display: block;
-    background-color: red;
+    background-color: var(--maincolor);
     width: 100%;
     height: 100%;
 }
@@ -276,8 +280,26 @@ hr {
 #resetButton {
     border: 0;
     background-color: transparent;
-    color: red;
+    color: var(--maincolor);
     font-size: 1em;
+}
+
+.homeButtonPopup {
+    border-bottom: 1px solid var(--graylight) !important;
+}
+
+.homeButtonPopup>div {
+    padding: 15px 0 !important;
+    height: 70px;
+}
+
+.homeButtonPopup>div>div {
+    justify-content: space-between !important;
+    border: 0 !important;
+    flex-direction: column;
+    align-items: start !important;
+    padding: 0 !important;
+    gap: 5px;
 }
 
 .toOpenPopUp {
@@ -298,7 +320,8 @@ hr {
     gap: 6px;
 }
 
-.toOpenPopUp h4 {
+.toOpenPopUp h4,
+.homeButtonPopup h4 {
     color: var(--gray);
     font-weight: 400;
 }
@@ -324,11 +347,11 @@ hr {
     display: block;
     width: 100%;
     height: 55px;
-    color: red;
+    color: var(--maincolor);
     background-color: transparent;
     border-radius: 10px;
     font-size: 1.1em;
-    border: 1px solid red;
+    border: 1px solid var(--maincolor);
 }
 
 #markalarMob,
@@ -375,14 +398,15 @@ hr {
 }
 
 .selectedTypeBigMob {
-    background-color: red !important;
+    background-color: var(--maincolor) !important;
     color: white;
 }
 
 #odometerInps h4,
 .minMaxInps h4,
 #priceInpMob h4,
-#mainElanlar {
+#mainElanlar,
+.fieldContainer h4 {
     color: var(--gray);
     font-weight: 400;
 }
@@ -445,7 +469,7 @@ hr {
     width: 90%;
     left: 50%;
     border: 0;
-    background-color: red;
+    background-color: var(--maincolor);
     padding: 10px;
     border-radius: 10px;
     color: white;
@@ -454,8 +478,12 @@ hr {
 
 .selectedTypeLittle {
     background-color: rgba(255, 0, 0, .5) !important;
-    border-color: red !important;
+    border-color: var(--maincolor) !important;
     color: white !important;
+}
+
+.selectedDes {
+    color: var(--maincolor);
 }
 
 #backdrop {
@@ -580,7 +608,7 @@ hr {
     color: orange;
 }
 
-#more{
+#more {
     display: none;
     position: fixed;
     top: 0;
@@ -589,12 +617,12 @@ hr {
     background-color: white;
 }
 
-#more h2{
+#more h2 {
     padding: 20px 0;
     text-align: center;
 }
 
-#more > div:first-of-type{
+#more>div:first-of-type {
     background-color: var(--graylight);
     display: flex;
     flex-direction: column;
@@ -603,7 +631,436 @@ hr {
     padding: 20px 0;
 }
 
-#more > div:first-of-type a{
+#more>div:first-of-type a {
     background-color: white;
     padding: 20px;
+}
+
+.scaled {
+    font-size: 1.5em;
+}
+
+#btnsAfterFilter {
+    display: flex;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+#btnsAfterFilter button {
+    display: flex;
+    justify-content: start !important;
+    gap: 10px;
+    padding: 15px !important;
+    border-radius: 35px !important;
+}
+
+
+.container {
+    max-width: 970px;
+    margin: auto;
+}
+
+header .container,
+header .container>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdownHeader {
+    position: relative;
+}
+
+.dropdownContent {
+    max-height: 0;
+    transition: .3s max-height, .3s padding;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 15px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    z-index: 3;
+    box-shadow: 0 0 10px #eee;
+}
+
+.dropdownContent a {
+    padding: 0 !important;
+}
+
+.dropdownHeader:hover .dropdownContent {
+    max-height: 700px;
+    padding: 15px;
+}
+
+.dropdownContent>li a {
+    color: black !important;
+}
+
+#globalLinks,
+#miniLinks,
+#mainLinks {
+    display: flex;
+}
+
+#globalLinks {
+    gap: 25px;
+}
+
+#miniLinks {
+    gap: 20px;
+}
+
+#mainLinks {
+    gap: 15px;
+}
+
+header .container>div>a {
+    margin-right: 18px;
+}
+
+#topLinksD,
+#bottomLinksD {
+    padding: 12px 0;
+}
+
+#topLinksD {
+    background-color: var(--graylight);
+}
+
+#bottomLinksD {
+    background-color: var(--maincolor);
+    padding: 10px 0;
+}
+
+#bottomLinksD a {
+    color: white;
+    padding: 15px 0;
+    display: block;
+}
+
+header .container>div>a {
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+#topLinksD a {
+    color: var(--gray);
+}
+
+#bottomLinksD button {
+    border: 0;
+    background-color: var(--green);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 6px;
+    font-size: 1em;
+}
+
+#filterController {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+#filterController>div {
+    display: flex;
+    gap: 10px;
+}
+
+#moreFilter {
+    color: var(--maincolor);
+    border: 0;
+    background-color: transparent;
+    font-size: 1em;
+}
+
+#filterCars {
+    background-color: var(--maincolor);
+    border: 0;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+}
+
+main>div:first-child {
+    background-color: #EBEDF3;
+}
+
+#mainFilters {
+    display: grid;
+    grid-template-columns: 23% 23% 23% 23%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktopFilterContainer {
+    padding: 30px 0;
+}
+
+/* .normalSelect {} */
+
+.selectWithSearch,
+.normalSelect {
+    position: relative;
+}
+
+.deskSearchDiv button {
+    width: 100%;
+    border: 0;
+    background-color: white;
+    text-align: left;
+    padding: 10px 20px;
+    display: flex;
+    z-index: 2;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deskSearchDiv input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    accent-color: var(--maincolor);
+    pointer-events: none;
+}
+
+.deskSearchDiv button:hover {
+    background-color: #eee;
+}
+
+.deskSearchDiv {
+    display: none;
+    flex-direction: column;
+    border-radius: 5px;
+    max-height: 330px;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    z-index: 1;
+    background-color: white;
+}
+
+.writeNumFilters {
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.writeNumFilters>div {
+    position: relative;
+}
+
+.writeNumFilters label {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 14px 10px;
+    font-size: 1em;
+    color: var(--gray);
+    transition: .3s padding, .3s font-size;
+}
+
+.labelUp {
+    padding: 7px 10px !important;
+    font-size: .8em !important;
+}
+
+.writeNumField {
+    height: 46px;
+    display: flex;
+    align-items: end;
+}
+
+.writeNumField input {
+    border: 0;
+    outline: 0;
+    padding: 26px 0 5px 10px;
+    width: 85%;
+}
+
+.writeNumField button {
+    width: 15% !important;
+    padding-bottom: 5px;
+    position: relative;
+    display: none;
+}
+
+.fieldContainer {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    background-color: white;
+    height: 46px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fieldContainer button,
+.normalSelect>div button,
+.writeNumField button {
+    width: 20%;
+    border: 0;
+    color: var(--gray);
+    background-color: white;
+}
+
+
+.fieldContainer>div {
+    width: 80%;
+}
+
+.fieldContainer>div>div {
+    padding: 10px;
+}
+
+.fieldContainer > div > div p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+    font-size: .9em;
+}
+
+
+.fieldContainer input {
+    width: 100%;
+    height: 100%;
+    /* cursor: pointer; */
+    border: 0;
+    outline: 0;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+
+.fieldContainer input::placeholder {
+    color: var(--gray);
+}
+
+.normalSelect>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 46px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.normalSelect p {
+    color: var(--gray);
+}
+
+.doubleFilters {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.doubleFilters>div {
+    width: 50%;
+}
+
+header,
+.desktopFilterContainer {
+    display: none;
+}
+
+.threeBtns {
+    display: flex;
+    height: 46px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.threeBtns button {
+    background-color: white;
+    width: 100%;
+    border: 0;
+    border-right: 2px solid #eee;
+    height: 100%;
+    padding: 0;
+    color: var(--gray);
+}
+
+.threeBtns button:last-child {
+    border: 0;
+}
+
+.tripleFilters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tripleFilters>button {
+    width: 25%;
+    border: 0;
+    background-color: white;
+    border-radius: 5px;
+    color: var(--gray);
+}
+
+.deskSearchDiv.visible {
+    display: flex;
+}
+
+@media only screen and (min-width:769px) {
+    #carsGrid {
+        padding-top: 40px;
+        grid-template-columns: auto auto auto;
+        gap: 20px;
+    }
+
+    .mobileFilterContainer,
+    #more,
+    #mainNavMobile,
+    #bottomLinks,
+    #mainElanlar {
+        display: none;
+    }
+
+    header,
+    .desktopFilterContainer {
+        display: block;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    #carsGrid {
+        grid-template-columns: auto auto auto auto;
+        gap: 20px;
+    }
+}
+
+.disabledDiv {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.selectedTransparent{
+    background-color: rgb(202, 16, 22, .1) !important;
+    color: var(--maincolor) !important;
+}
+
+.visible{
+    display: initial !important;
+}
+
+.noVisible{
+    visibility: hidden !important;
+}
+
+.noPadding{
+    padding: 0;
+}
+
+.selectedDriveType{
+    background-color: var(--maincolor) !important;
+    color: white !important;
 }
